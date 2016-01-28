@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BaseTemplate.master.cs" Inherits="MyChurch.App_Master.BaseTemplate" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <header>
+            <asp:ContentPlaceHolder ID="header" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </header>
+
+        <div id="LoginStatus">
+                <asp:LoginStatus ID="uxLoginStatus" CssClass="uxLoginStatus" runat="server" />
+        </div>
+
+        <nav>
+            <asp:ContentPlaceHolder ID="nav" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </nav>
+
+        <main>
+            <asp:ContentPlaceHolder ID="main" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer>
+            <asp:ContentPlaceHolder ID="footer" runat="server">
+                <p>&copy Addition Wizard Software 2016</p>
+            </asp:ContentPlaceHolder>
+        </footer>
+
+        
+    </form>
+</body>
+</html>
