@@ -36,25 +36,33 @@ namespace MyChurch.Code
                     //set the user object attributes to the information read in
                     church.UserId = (Guid)reader[0];
                     church.name = (String)reader[1];
-                    church.address = (String)reader[2];
-                    church.city = (String)reader[3];
-                    church.state = (String)reader[4];
-                    church.zip = (String)reader[5];
-                    if (reader[6] == System.DBNull.Value)
+                    if(reader[2] == System.DBNull.Value)
+                    {
+                        church.email = null;
+                    }
+                    else
+                    {
+                        church.email = (String)reader[2];
+                    }
+                    church.address = (String)reader[3];
+                    church.city = (String)reader[4];
+                    church.state = (String)reader[5];
+                    church.zip = (String)reader[6];
+                    if (reader[7] == System.DBNull.Value)
                     {
                         church.web = null;
                     }
                     else
                     {
-                        church.web = (String)reader[6];
+                        church.web = (String)reader[7];
                     }
-                    if (reader[7] == System.DBNull.Value)
+                    if (reader[8] == System.DBNull.Value)
                     {
                         church.phone = null;
                     }
                     else
                     {
-                        church.phone = (String)reader[7];
+                        church.phone = (String)reader[8];
                     }
                 
                 }
@@ -92,6 +100,7 @@ namespace MyChurch.Code
                 //set all of the data to be sent to the database
                 command.Parameters.Add(new SqlParameter("@UserId", profile.UserId));
                 command.Parameters.Add(new SqlParameter("@ChurchName", profile.name));
+                command.Parameters.Add(new SqlParameter("@ChurchEmail", profile.email));
                 command.Parameters.Add(new SqlParameter("@ChurchAddress", profile.address));
                 command.Parameters.Add(new SqlParameter("@ChurchCity", profile.city));
                 command.Parameters.Add(new SqlParameter("@ChurchState", profile.state));

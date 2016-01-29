@@ -25,6 +25,7 @@ namespace MyChurch.Users
             Session["ProfileData"] = cpbo;
 
             LitName.Text = cpbo.name;
+            LitEmail.Text = cpbo.email;
             LitAddress.Text = cpbo.address;
             LitCity.Text = cpbo.city;
             LitState.Text = cpbo.state;
@@ -44,6 +45,7 @@ namespace MyChurch.Users
                 //setup session object
                 ChurchProfileBO cpbo = new ChurchProfileBO();
                 cpbo.name = uxName.Text;
+                cpbo.email = uxEmail.Text;
                 cpbo.address = uxAddress.Text;
                 cpbo.city = uxCity.Text;
                 cpbo.state = uxState.Text;
@@ -57,6 +59,7 @@ namespace MyChurch.Users
 
                 //add info to literals
                 LitName.Text = uxName.Text;
+                LitEmail.Text = cpbo.email;
                 LitAddress.Text = cpbo.address;// uxAddress.Text;
                 LitCity.Text = uxCity.Text;
                 LitState.Text = uxState.Text;
@@ -84,6 +87,7 @@ namespace MyChurch.Users
                 ChurchProfileBO cpbo = (ChurchProfileBO)Session["ProfileData"];
 
                 uxName.Text = cpbo.name;
+                uxEmail.Text = cpbo.name;
                 uxAddress.Text = cpbo.address;
                 uxState.Text = cpbo.state;
                 uxCity.Text = cpbo.city;

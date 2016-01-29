@@ -10,6 +10,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="uxScriptMgr" runat="server">
+
+        </asp:ScriptManager>
+
 
         <header>
             <asp:ContentPlaceHolder ID="header" runat="server">
