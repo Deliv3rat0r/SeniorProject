@@ -17,7 +17,9 @@
         InsertCommand="INSERT INTO SPWorker(FName, LName, Phone, Email, LastWorked) VALUES(@FName, @LName, @Phone, @Email, @LastWorked); SELECT @WorkerID = @@IDENTITY" 
         OnInserted="uxWorkerSql_Inserted" runat="server"
         UpdateCommandType="Text" 
-        UpdateCommand="UPDATE SPWorker SET FName=@FName, LName=@LName, Phone=@Phone, Email=@Email, LastWorked=@LastWorked WHERE WorkerID=@WorkerID" >
+        UpdateCommand="UPDATE SPWorker SET FName=@FName, LName=@LName, Phone=@Phone, Email=@Email, LastWorked=@LastWorked WHERE WorkerID=@WorkerID"
+        DeleteCommandType="Text" 
+        DeleteCommand="DELETE FROM SPChurchWorkers WHERE WorkerID=@WorkerID; DELETE FROM SPWorker WHERE WorkerID=@WorkerID;" >
         
         <SelectParameters>
             <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />
@@ -31,34 +33,38 @@
 
     <asp:UpdatePanel ID="uxWorkerUpdate" runat="server">
         <ContentTemplate>
-            <asp:FormView ID="uxFormView" DataSourceID="uxWorkerSql" DefaultMode="Insert" runat="server">
+            <asp:FormView ID="uxFormView" DataSourceID="uxWorkerSql" DefaultMode="Insert" CssClass="WorkerInsert" runat="server">
                 <InsertItemTemplate>
                     <%--Placeholder for insert new worker--%>
+                    <div id="WorkerTextInput">
 
-                    <asp:Label ID="lblFName" AssociatedControlID="uxFName" runat="server">First Name: </asp:Label>
-                    <asp:TextBox ID="uxFName" MaxLength="30" Text='<%#Bind("FName") %>' runat="server" />
+                        <asp:Label ID="lblFName" AssociatedControlID="uxFName" CssClass="lblBlock" runat="server">First Name: </asp:Label>
+                        <asp:TextBox ID="uxFName" MaxLength="30" Text='<%#Bind("FName") %>' runat="server" />
+                        <asp:RequiredFieldValidator ID="reqFName" ControlToValidate="uxFName" Display="Dynamic" Text="*" ErrorMessage="Worker First Name Required" runat="server" /> 
 
-                    <br /><br />
+                        <br /><br />
 
-                    <asp:Label ID="lblLName" AssociatedControlID="uxLName" runat="server">Last Name: </asp:Label>
-                    <asp:TextBox ID="uxLName" MaxLength="30" Text='<%#Bind("LName") %>' runat="server" />
+                        <asp:Label ID="lblLName" AssociatedControlID="uxLName" CssClass="lblBlock" runat="server">Last Name: </asp:Label>
+                        <asp:TextBox ID="uxLName" MaxLength="30" Text='<%#Bind("LName") %>' runat="server" />
+                        <asp:RequiredFieldValidator ID="reqLName" ControlToValidate="uxLName" Display="Dynamic" Text="*" ErrorMessage="Worker Last Name Required" runat="server" />
 
-                    <br /><br />
+                        <br /><br />
 
-                    <asp:Label ID="lblPhone" AssociatedControlID="uxPhone" runat="server">Phone: </asp:Label>
-                    <asp:TextBox ID="uxPhone" MaxLength="10" Text='<%#Bind("Phone") %>' runat="server" />
+                        <asp:Label ID="lblPhone" AssociatedControlID="uxPhone" CssClass="lblBlock" runat="server">Phone: </asp:Label>
+                        <asp:TextBox ID="uxPhone" MaxLength="10" Text='<%#Bind("Phone") %>' runat="server" />
 
-                    <br /><br />
+                        <br /><br />
 
-                    <asp:Label ID="lblEmail" AssociatedControlID="uxEmail" runat="server">Email: </asp:Label>
-                    <asp:TextBox ID="uxEmail" MaxLength="50" Text='<%#Bind("Email") %>' runat="server" />
+                        <asp:Label ID="lblEmail" AssociatedControlID="uxEmail" CssClass="lblBlock" runat="server">Email: </asp:Label>
+                        <asp:TextBox ID="uxEmail" MaxLength="50" Text='<%#Bind("Email") %>' runat="server" />
 
-                    <br /><br />
+                    </div>
 
-                    <asp:Label ID="lblLastWorked" AssociatedControlID="uxLastWorked" runat="server">Last Worked:</asp:Label>
-                    <br />
-                    <asp:Calendar ID="uxLastWorked" SelectedDate='<%#Bind("LastWorked") %>' runat="server"></asp:Calendar>
-
+                    <div id="WorkerCalendar">
+                        <asp:Label ID="lblLastWorked" AssociatedControlID="uxLastWorked" runat="server">Last Worked:</asp:Label>
+                        <br />
+                        <asp:Calendar ID="uxLastWorked" SelectedDate='<%#Bind("LastWorked") %>' runat="server"></asp:Calendar>
+                    </div>
                     <br />
                     
                     <%--OnClick="uxAddWorker_Click"--%>
@@ -69,7 +75,8 @@
                 </InsertItemTemplate>
             </asp:FormView>
 
-            <asp:GridView ID="uxGridView" AutoGenerateColumns="false" DataSourceID="uxWorkerSql" DataKeyNames="WorkerID" AllowSorting="true" AllowPaging="true" PageSize="10" runat="server">
+            <asp:GridView ID="uxGridView" AutoGenerateColumns="false" Width="100%" DataSourceID="uxWorkerSql"
+                 DataKeyNames="WorkerID" AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="datagrid" HeaderStyle-CssClass="gridview_header" runat="server">
                 <Columns>
                     <asp:BoundField DataField="FName" SortExpression="FName" HeaderText="First Name" />
                     <asp:BoundField DataField="LName" SortExpression="LName" HeaderText="Last Name" />

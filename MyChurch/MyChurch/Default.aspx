@@ -1,16 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/BaseTemplate.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MyChurch.Users.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/BaseTemplate.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MyChurch.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Login</title>
+    <title>Home</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="header" runat="server">
-    <h1>Login</h1>
+    <h1>Homepage Placeholder</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="nav" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
-    <asp:Login MembershipProvider="sqlMembership" CreateUserText="Register" CreateUserUrl="~/Users/Register.aspx" runat="server">
-
-    </asp:Login>
+    <p>Content placeholder</p>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>

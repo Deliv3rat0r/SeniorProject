@@ -4,46 +4,59 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+    <link type="text/css" rel="stylesheet" href="../CSS/DefaultStyles.css" />
+
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="uxScriptMgr" runat="server">
 
-        </asp:ScriptManager>
+        <div id="centerBodyDiv">
+
+            <asp:ScriptManager ID="uxScriptMgr" runat="server">
+
+            </asp:ScriptManager>
 
 
-        <header>
-            <asp:ContentPlaceHolder ID="header" runat="server">
+            <header>
+                <asp:ContentPlaceHolder ID="header" runat="server">
 
-            </asp:ContentPlaceHolder>
-        </header>
+                </asp:ContentPlaceHolder>
+            </header>
 
-        <div id="LoginStatus">
-                <asp:LoginStatus ID="uxLoginStatus" CssClass="uxLoginStatus" runat="server" />
-        </div>
+            <div id="LoginStatus">
+                    <asp:LoginStatus ID="uxLoginStatus" CssClass="uxLoginStatus" runat="server" />
+            </div>
 
-        <nav>
-            <asp:ContentPlaceHolder ID="nav" runat="server">
+            <nav>
 
-            </asp:ContentPlaceHolder>
-        </nav>
+                <asp:ContentPlaceHolder ID="nav" runat="server">
 
-        <main>
-            <asp:ContentPlaceHolder ID="main" runat="server">
+                </asp:ContentPlaceHolder>
 
-            </asp:ContentPlaceHolder>
-        </main>
+                <asp:SiteMapDataSource ID="uxSiteMap" StartingNodeUrl="~/Default.aspx" ShowStartingNode="false" runat="server" />
+                <asp:Menu DataSourceID="uxSiteMap" StaticMenuItemStyle-VerticalPadding="1px" StaticMenuItemStyle-HorizontalPadding="10px" StaticMenuStyle-CssClass="uxMenuStyle" CssClass="uxSiteMapMenu" Orientation="Horizontal" runat="server">
+                </asp:Menu>
+                <asp:SiteMapPath ID="uxSiteMapPath" PathSeparator=" > " CssClass="uxSitePath" runat="server"></asp:SiteMapPath>
+            </nav>
 
-        <footer>
-            <asp:ContentPlaceHolder ID="footer" runat="server">
+            <main>
+                <asp:ContentPlaceHolder ID="main" runat="server">
+
+                </asp:ContentPlaceHolder>
+            </main>
+
+            <footer>
                 <p>&copy Addition Wizard Software 2016</p>
-            </asp:ContentPlaceHolder>
-        </footer>
+                <asp:ContentPlaceHolder ID="footer" runat="server">
+                
+                </asp:ContentPlaceHolder>
+            </footer>
 
-        
+        </div>
     </form>
 </body>
 </html>

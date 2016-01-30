@@ -67,6 +67,24 @@ namespace MyChurch.App_Master {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder nav;
         
         /// <summary>
+        /// uxSiteMap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapDataSource uxSiteMap;
+        
+        /// <summary>
+        /// uxSiteMapPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapPath uxSiteMapPath;
+        
+        /// <summary>
         /// main control.
         /// </summary>
         /// <remarks>
