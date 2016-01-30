@@ -70,10 +70,10 @@
                     <%--OnClick="uxAddWorker_Click"--%>
                     <asp:Button ID="uxAddWorker" Text="Add Worker" CommandName="Insert"  runat="server" />
 
-                    <hr />
-
                 </InsertItemTemplate>
             </asp:FormView>
+
+            <hr />
 
             <asp:GridView ID="uxGridView" AutoGenerateColumns="false" Width="100%" DataSourceID="uxWorkerSql"
                  DataKeyNames="WorkerID" AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="datagrid" HeaderStyle-CssClass="gridview_header" runat="server">
