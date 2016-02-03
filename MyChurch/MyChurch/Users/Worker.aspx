@@ -40,13 +40,13 @@
 
                         <asp:Label ID="lblFName" AssociatedControlID="uxFName" CssClass="lblBlock" runat="server">First Name: </asp:Label>
                         <asp:TextBox ID="uxFName" MaxLength="30" Text='<%#Bind("FName") %>' runat="server" />
-                        <asp:RequiredFieldValidator ID="reqFName" ControlToValidate="uxFName" Display="Dynamic" Text="*" ErrorMessage="Worker First Name Required" runat="server" /> 
+                        <%--<asp:RequiredFieldValidator ID="reqFName" ControlToValidate="uxFName" Display="Dynamic" Text="*" ErrorMessage="Worker First Name Required" runat="server" /> --%>
 
                         <br /><br />
 
                         <asp:Label ID="lblLName" AssociatedControlID="uxLName" CssClass="lblBlock" runat="server">Last Name: </asp:Label>
                         <asp:TextBox ID="uxLName" MaxLength="30" Text='<%#Bind("LName") %>' runat="server" />
-                        <asp:RequiredFieldValidator ID="reqLName" ControlToValidate="uxLName" Display="Dynamic" Text="*" ErrorMessage="Worker Last Name Required" runat="server" />
+                        <%--<asp:RequiredFieldValidator ID="reqLName" ControlToValidate="uxLName" Display="Dynamic" Text="*" ErrorMessage="Worker Last Name Required" runat="server" />--%>
 
                         <br /><br />
 

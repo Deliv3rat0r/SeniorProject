@@ -76,7 +76,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.sitemap" />
+    <Content Include="Users\Jobs.aspx" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Users\ChurchProfile.aspx" />
@@ -113,6 +116,13 @@
     </Compile>
     <Compile Include="Users\ChurchProfile.aspx.designer.cs">
       <DependentUpon>ChurchProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Jobs.aspx.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Jobs.aspx.designer.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
