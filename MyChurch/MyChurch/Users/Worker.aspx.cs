@@ -126,6 +126,9 @@ namespace MyChurch.Users
                 wbo.email = row.Cells[4].Text;
                 wbo.lastworked = row.Cells[5].Text;
 
+                Session["SessionWorker"] = wbo;
+
+                Response.Redirect("~/Users/WorkerUnavailable.aspx");
             }
         }
     }

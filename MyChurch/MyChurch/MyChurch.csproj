@@ -77,6 +77,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Users\Jobs.aspx" />
+    <Content Include="Users\WorkerUnavailable.aspx" />
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
     </Content>
@@ -144,6 +145,13 @@
     </Compile>
     <Compile Include="Users\Worker.aspx.designer.cs">
       <DependentUpon>Worker.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\WorkerUnavailable.aspx.cs">
+      <DependentUpon>WorkerUnavailable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\WorkerUnavailable.aspx.designer.cs">
+      <DependentUpon>WorkerUnavailable.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
