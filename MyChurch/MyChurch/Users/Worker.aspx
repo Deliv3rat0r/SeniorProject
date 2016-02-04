@@ -76,8 +76,9 @@
             <hr />
 
             <asp:GridView ID="uxGridView" AutoGenerateColumns="false" Width="100%" DataSourceID="uxWorkerSql"
-                 DataKeyNames="WorkerID" AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="datagrid" HeaderStyle-CssClass="gridview_header" runat="server">
+                 DataKeyNames="WorkerID" AllowSorting="true" AllowPaging="true" PageSize="10" CssClass="datagrid" HeaderStyle-CssClass="gridview_header" OnRowCommand="uxGridView_RowCommand" runat="server">
                 <Columns>
+                    <asp:BoundField DataField="WorkerID" Visible="false" />
                     <asp:BoundField DataField="FName" SortExpression="FName" HeaderText="First Name" />
                     <asp:BoundField DataField="LName" SortExpression="LName" HeaderText="Last Name" />
                     <asp:BoundField DataField="Phone" SortExpression="Phone" HeaderText="Phone" />
@@ -86,6 +87,14 @@
 
                     <asp:CommandField ShowEditButton="true" ShowDeleteButton="true" />
 
+
+                    <%--<asp:TemplateField HeaderText="Unavailable Dates" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Button ID="uxUnavailable" runat="server" CommandName="UnavailableDates" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Add Dates" />
+                        </ItemTemplate>
+                    </asp:TemplateField>--%>
+
+                    
                 </Columns>
             </asp:GridView> 
 

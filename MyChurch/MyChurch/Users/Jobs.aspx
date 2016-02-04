@@ -48,7 +48,7 @@
                     <br />
                     
                     <%--OnClick="uxAddJob_Click"--%>
-                    <asp:Button ID="uxAddJob" Text="Add Job" CommandName="Insert"  runat="server" />
+                    <asp:Button ID="uxAddJob" Text="Add Job" CommandName="Insert" runat="server" />
 
                 </InsertItemTemplate>
             </asp:FormView>

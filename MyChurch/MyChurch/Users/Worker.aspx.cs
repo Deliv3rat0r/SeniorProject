@@ -106,5 +106,27 @@ namespace MyChurch.Users
             e.Command.Parameters["@UserId"].Value = uid;
             
         }
+
+        protected void uxGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "UnavailableDates")
+            {
+                WorkerBO wbo = new WorkerBO();
+
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                //get row of selected index
+                GridViewRow row = uxGridView.Rows[index];
+
+                //set worker object attributes
+                wbo.wid = Convert.ToInt32(row.Cells[0].Text);
+                wbo.fname = row.Cells[1].Text;
+                wbo.lname = row.Cells[2].Text;
+                wbo.phone = row.Cells[3].Text;
+                wbo.email = row.Cells[4].Text;
+                wbo.lastworked = row.Cells[5].Text;
+
+            }
+        }
     }
 }

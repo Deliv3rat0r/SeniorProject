@@ -12,5 +12,6 @@ namespace MyChurch.Code
         public String phone { get; set; }
         public String email { get; set; }
         public String lastworked { get; set; }
+        public int wid { get; set; }
     }
 }
