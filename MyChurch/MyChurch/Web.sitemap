@@ -2,6 +2,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="~/Default.aspx" title="Home"  description="Homepage">
       <siteMapNode url="~/Users/ChurchProfile.aspx" title="Profile"  description="Church Profile Page" />
+      <siteMapNode url="~/Users/Schedule.aspx" title="Schedule" description="Church Schedule Page" />
       <siteMapNode url="~/Users/Worker.aspx" title="Workers" description="Workers for profile" />
       <siteMapNode url="~/Users/Jobs.aspx" title="Jobs" description="Jobs for profile" />
     </siteMapNode>

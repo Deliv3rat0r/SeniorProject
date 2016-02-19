@@ -24,7 +24,7 @@ namespace MyChurch.Users
 
             Session["ProfileData"] = cpbo;
 
-            LitName.Text = cpbo.name;
+            LitName.Text = "<h2>" + cpbo.name + "</h2>";
             LitEmail.Text = cpbo.email;
             LitAddress.Text = cpbo.address;
             LitCity.Text = cpbo.city;

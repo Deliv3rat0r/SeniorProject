@@ -65,7 +65,7 @@
 
         <asp:View ID="View2" runat="server">
 
-            <asp:Label ID="lblNameV2" runat="server"><strong>Church Name: </strong></asp:Label>
+            <asp:Label ID="lblNameV2" runat="server"></asp:Label>
             <asp:Literal ID="LitName" runat="server" />
 
             <br />

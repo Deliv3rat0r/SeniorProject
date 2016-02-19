@@ -77,6 +77,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Users\Jobs.aspx" />
+    <Content Include="Users\Schedule.aspx" />
+    <Content Include="Users\Service.aspx" />
     <Content Include="Users\WorkerUnavailable.aspx" />
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
@@ -101,6 +103,7 @@
     </Compile>
     <Compile Include="Code\ChurchProfile.cs" />
     <Compile Include="Code\ChurchProfileRepo.cs" />
+    <Compile Include="Code\Schedule.cs" />
     <Compile Include="Code\Worker.cs" />
     <Compile Include="Code\WorkerRepo.cs" />
     <Compile Include="Default.aspx.cs">
@@ -138,6 +141,20 @@
     </Compile>
     <Compile Include="Users\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Schedule.aspx.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Schedule.aspx.designer.cs">
+      <DependentUpon>Schedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Service.aspx.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Service.aspx.designer.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users\Worker.aspx.cs">
       <DependentUpon>Worker.aspx</DependentUpon>
