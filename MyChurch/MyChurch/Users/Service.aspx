@@ -18,7 +18,10 @@
         OnInserted="dbServiceSql_Inserted"
         SelectCommandType="Text" 
         SelectCommand="SELECT * FROM SPService JOIN SPScheduleService ON SPService.ServiceID = SPScheduleService.ServiceID WHERE SPScheduleService.ScheduleID = @ScheduleID ORDER BY SPService.ServiceDate" 
-        OnSelecting="dbServiceSql_Selecting">
+        OnSelecting="dbServiceSql_Selecting" 
+        UpdateCommandType="Text" 
+        UpdateCommand="UPDATE SPService SET Title=@Title, Duration=@Duration, ServiceDate=@ServiceDate WHERE ServiceID=@ServiceID" 
+        DeleteCommandType="Text" DeleteCommand="DELETE FROM SPScheduleService WHERE ServiceID=@ServiceID; DELETE FROM SPService WHERE ServiceID=@ServiceID;">
         
         <InsertParameters>
             <asp:Parameter Name="ServiceID" Direction="Output" Type="Int32" />
@@ -75,7 +78,7 @@
 
                     <asp:TemplateField HeaderText="Show Schedule" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:Button ID="uxServiceSchedule" runat="server" CommandName="ServiceSchedule" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="View Schedule" />
+                            <asp:Button ID="uxServiceSchedule" runat="server" CommandName="AssignJobs" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Assign Jobs" />
                         </ItemTemplate>
                     </asp:TemplateField>
 

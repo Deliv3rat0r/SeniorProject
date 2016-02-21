@@ -34,6 +34,25 @@ namespace MyChurch.Users
 
         protected void uxGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if(e.CommandName == "AssignJobs")
+            {
+                ServiceBO servbo = new ServiceBO();
+
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                //get selected row index
+                GridViewRow row = uxGridView.Rows[index];
+
+                //set service object attributes
+                servbo.servid = Convert.ToInt32(row.Cells[0].Text);
+                servbo.title = row.Cells[1].Text;
+                servbo.duration = row.Cells[2].Text;
+                servbo.servicedate = row.Cells[3].Text;
+
+                Session["Service"] = servbo;
+
+                Response.Redirect("~/Users/AssignJobs.aspx");
+            }
 
         }
 
