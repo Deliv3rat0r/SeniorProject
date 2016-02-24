@@ -25,11 +25,31 @@ namespace MyChurch.Users
                 litTop.Text = "<h2>" + servbo.title + "</h2>" + "<p>" + servbo.servicedate + "</p>";
 
                 //set DB param
+                dbJobs.SelectParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
             }
             else
             {
                 Response.Redirect("~/Users/Service.aspx");
             }
+        }
+
+        protected void dbWorkers_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+            //get user id
+            MembershipUser usr = Membership.GetUser();
+            Guid uid = (Guid)usr.ProviderUserKey;
+
+            e.Command.Parameters["@UserId"].Value = uid;
+        }
+
+        protected void dbJobs_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+            //get user id
+            MembershipUser usr = Membership.GetUser();
+            Guid uid = (Guid)usr.ProviderUserKey;
+
+            e.Command.Parameters["@UserId"].Value = uid;
+
         }
     }
 }
