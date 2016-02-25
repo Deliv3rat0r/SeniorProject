@@ -26,6 +26,8 @@ namespace MyChurch.Users
 
                 //set DB param
                 dbJobs.SelectParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
+                dbJobs.InsertParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
+                dbJobs.UpdateParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
             }
             else
             {
@@ -50,6 +52,50 @@ namespace MyChurch.Users
 
             e.Command.Parameters["@UserId"].Value = uid;
 
+        }
+
+        protected void dbJobs_Inserting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+            //dbJobs.InsertParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+        }
+
+        protected void dbJobs_Updating(object sender, SqlDataSourceCommandEventArgs e)
+        {
+            //dbJobs.UpdateParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+        }
+
+        protected void uxAssignJobsGrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //dbJobs.UpdateParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+            //dbJobs.InsertParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+        }
+
+        protected void uxAssignJobsGrid_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            //dbJobs.UpdateParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+            //dbJobs.InsertParameters["@JobID"].DefaultValue = uxAssignJobsGrid.SelectedRow.Cells[0].Text;
+        }
+
+        protected void uxAssignJobsGrid_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            //var ddl = uxAssignJobsGrid.Rows[e.NewEditIndex].FindControl("uxWorkerList") as DropDownList;
+            //String tempnum = ddl.SelectedValue;
+            //dbJobs.InsertParameters["WorkerID"].DefaultValue = tempnum;
+            //dbJobs.UpdateParameters["WorkerID"].DefaultValue = tempnum;
+        }
+
+        protected void uxWorkerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String tempnum = ((DropDownList)sender).SelectedValue;
+            dbJobs.InsertParameters["WorkerID"].DefaultValue = tempnum;
+            dbJobs.UpdateParameters["WorkerID"].DefaultValue = tempnum;
+        }
+
+        protected void uxWorkerList_Load(object sender, EventArgs e)
+        {
+            String tempnum = ((DropDownList)sender).SelectedValue;
+            dbJobs.InsertParameters["WorkerID"].DefaultValue = tempnum;
+            dbJobs.UpdateParameters["WorkerID"].DefaultValue = tempnum;
         }
     }
 }

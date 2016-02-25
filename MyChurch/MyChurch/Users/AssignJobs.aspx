@@ -24,32 +24,51 @@
     <asp:SqlDataSource ID="dbJobs" 
         ConnectionString="<%$ConnectionStrings:DB_MYCHURCH %>"
         SelectCommandType="Text" 
-        SelectCommand="SELECT SPJobs.JobID, SPJobs.JobTitle, SPAssignedJob.WorkerID FROM SPJobs LEFT OUTER JOIN SPAssignedJob ON SPJobs.JobID = SPAssignedJob.JobID AND SPAssignedJob.ServiceID=@ServiceID JOIN SPChurchJobs ON SPJobs.JobID = SPChurchJobs.JobID WHERE SPChurchJobs.UserId=@UserId" 
+        SelectCommand="SELECT SPJobs.JobID, SPJobs.JobTitle, SPAssignedJob.WorkerID, CONCAT(SPWorker.Fname, ' ', SPWorker.Lname) AS WholeName FROM SPJobs LEFT OUTER JOIN SPAssignedJob ON SPJobs.JobID = SPAssignedJob.JobID AND SPAssignedJob.ServiceID=@ServiceID JOIN SPChurchJobs ON SPJobs.JobID = SPChurchJobs.JobID LEFT OUTER JOIN SPWorker ON SPAssignedJob.WorkerID = SPWorker.WorkerID WHERE SPChurchJobs.UserId=@UserId" 
         runat="server" 
-        OnSelecting="dbJobs_Selecting">
+        OnSelecting="dbJobs_Selecting" 
+        InsertCommandType="StoredProcedure" 
+        InsertCommand="AssignedJob_InsertUpdate" 
+        OnInserting="dbJobs_Inserting" 
+        UpdateCommandType="StoredProcedure" 
+        UpdateCommand="AssignedJob_InsertUpdate" 
+        OnUpdating="dbJobs_Updating">
 
         <SelectParameters>
             <asp:Parameter Name="ServiceID" Direction="Input" Type="Int32" />
             <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />
         </SelectParameters>
 
+        <InsertParameters>
+            <asp:Parameter Name="ServiceID" Direction="Input" Type="Int32" />
+            <asp:Parameter Name="WorkerID" Direction="Input" Type="Int32" />      
+        </InsertParameters>
+
+        <UpdateParameters>
+            <asp:Parameter Name="ServiceID" Direction="Input" Type="Int32" /> 
+            <asp:Parameter Name="WorkerID" Direction="Input" Type="Int32" />
+        </UpdateParameters>
+
     </asp:SqlDataSource>
 
-    <asp:GridView ID="uxAssignJobsGrid" AutoGenerateColumns="false" runat="server" DataSourceID="dbJobs"
+    <asp:GridView ID="uxAssignJobsGrid" DataKeyNames="JobID" AutoGenerateColumns="false" runat="server" DataSourceID="dbJobs"
         CssClass="datagrid" HeaderStyle-CssClass="gridview_header" Width="100%">
         <Columns>
+            <asp:BoundField DataField="JobID" ReadOnly="true" />
             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" ReadOnly="true" />
             <asp:TemplateField HeaderText="Worker">
                 <ItemTemplate>
-                    <%#Eval("WorkerID") %>
+                    <%#Eval("WholeName") %>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:DropDownList ID="uxWorkerList" DataSourceID="dbWorkers" DataValueField="WorkerID" DataTextField="WholeName" runat="server">
+                    <asp:DropDownList ID="uxWorkerList" DataSourceID="dbWorkers" DataValueField="WorkerID" 
+                        DataTextField="WholeName" OnSelectedIndexChanged="uxWorkerList_SelectedIndexChanged"
+                         Width="100%" OnLoad="uxWorkerList_Load" runat="server">
                         
                     </asp:DropDownList>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField EditText="Edit" ShowEditButton="true" />
+            <asp:CommandField EditText="Assign Worker" ShowEditButton="true" />
         </Columns>
     </asp:GridView>
 
