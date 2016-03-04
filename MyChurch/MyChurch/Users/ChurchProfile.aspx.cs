@@ -32,6 +32,9 @@ namespace MyChurch.Users
             LitZip.Text = cpbo.zip;
             LitWeb.Text = cpbo.web;
             LitPhone.Text = cpbo.phone;
+
+            //set userid to logged in user for displaying schedule
+            dbViewSchedule.SelectParameters["UserId"].DefaultValue = uid.ToString();
         }
 
         protected void uxSaveBtn_Click(object sender, EventArgs e)

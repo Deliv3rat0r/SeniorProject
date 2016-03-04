@@ -125,3 +125,10 @@ footer{
     color:#0A8F64;
     text-decoration:none;
 }
+
+#profileschedule{
+    background-color: rgba(125,185,232,1);
+    padding: 5px 10px;
+    margin: 4px;
+    
+}

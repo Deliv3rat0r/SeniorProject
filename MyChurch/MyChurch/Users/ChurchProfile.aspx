@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/App_Master/BaseTemplate.Master" AutoEventWireup="true" CodeBehind="ChurchProfile.aspx.cs" Inherits="MyChurch.Users.ChurchProfile" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Church Profile</title>
 </asp:Content>
@@ -103,9 +104,39 @@
             <asp:Label ID="lblPhoneV2" runat="server"><strong>Church Phone: </strong></asp:Label>
             <asp:Literal ID="LitPhone" runat="server" />
 
-            <br /><br />
+            <br />
+            <br />
 
             <asp:Button ID="uxEditProfile" Text="Edit Info" OnClick="uxEditProfile_Click" runat="server" />
+
+            <hr />
+
+            <asp:SqlDataSource ID="dbViewSchedule"
+                ConnectionString="<%$ConnectionStrings:DB_MYCHURCH %>"
+                runat="server"
+                SelectCommandType="Text"
+                SelectCommand="SELECT SPService.Title, SPService.Duration, SPService.ServiceDate FROM SPService JOIN SPScheduleService ON SPService.ServiceID = SPScheduleService.ServiceID JOIN SPSchedule ON SPSchedule.ScheduleID = SPScheduleService.ScheduleID WHERE SPSchedule.UserId = @UserId AND DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 1 ORDER BY SPService.ServiceDate">
+
+                <SelectParameters>
+                    <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />
+                </SelectParameters>
+
+            </asp:SqlDataSource>
+
+            <div id="uxListSchedule">
+                <h3><u>Recent & Upcoming Events</u></h3>
+                <asp:Repeater ID="uxSchedule" DataSourceID="dbViewSchedule" runat="server">
+                    <ItemTemplate>
+                        <div id="profileschedule">
+                            <h4><%#Eval("ServiceDate") %></h4>
+                            <%#Eval("Title") %>
+                            <br />
+                            Duration: <%#Eval("Duration") %> minutes
+                            <br />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
 
         </asp:View>
 
