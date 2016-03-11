@@ -24,10 +24,15 @@ namespace MyChurch.Users
             {
                 wbo = (WorkerBO)(Session["SessionWorker"]);
                 litWorkerInfo.Text = "<h2>" + wbo.fname + " " + wbo.lname + "</h2>";
+
+                uxWorkerAvailableSql.SelectParameters["WorkerID"].DefaultValue = wbo.wid.ToString();
+                uxWorkerAvailableSql.InsertParameters["WorkerID"].DefaultValue = wbo.wid.ToString();
+                uxWorkerAvailableSql.UpdateParameters["WorkerID"].DefaultValue = wbo.wid.ToString();
+                uxWorkerAvailableSql.DeleteParameters["WorkerID"].DefaultValue = wbo.wid.ToString();
             }
             else
             {
-
+                Response.Redirect("~/Users/Worker.aspx");
             }
         }
     }

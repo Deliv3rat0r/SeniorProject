@@ -28,6 +28,8 @@ namespace MyChurch.Users
                 dbJobs.SelectParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
                 dbJobs.InsertParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
                 dbJobs.UpdateParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
+
+                dbWorkers.SelectParameters["ServiceID"].DefaultValue = servbo.servid.ToString();
             }
             else
             {

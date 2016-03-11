@@ -13,11 +13,12 @@
     <asp:SqlDataSource ID="dbWorkers" 
         ConnectionString="<%$ConnectionStrings:DB_MYCHURCH %>" 
         SelectCommandType="Text" 
-        SelectCommand="SELECT SPWorker.WorkerID, CONCAT(SPWorker.FName, ' ', SPWorker.LName) AS WholeName FROM SPWorker JOIN SPChurchWorkers ON SPWorker.WorkerID = SPChurchWorkers.WorkerID WHERE SPChurchWorkers.UserId=@UserId" 
+        SelectCommand="SELECT SPWorker.WorkerID, CONCAT(SPWorker.FName, ' ', SPWorker.LName) AS WholeName FROM SPWorker JOIN SPChurchWorkers ON SPWorker.WorkerID = SPChurchWorkers.WorkerID LEFT JOIN SPWorkerUnavailable ON SPWorker.WorkerID = SPWorkerUnavailable.WorkerID WHERE SPChurchWorkers.UserId=@UserId AND NOT EXISTS (SELECT 1 FROM SPService WHERE SPService.ServiceDate BETWEEN SPWorkerUnavailable.UnavailableDateBegin AND SPWorkerUnavailable.UnavailableDateEnd)" 
         OnSelecting="dbWorkers_Selecting" 
         runat="server">
         <SelectParameters>
             <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />
+            <asp:Parameter Name="ServiceID" Direction="Input" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
 
