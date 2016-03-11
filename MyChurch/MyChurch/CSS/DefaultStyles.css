@@ -94,8 +94,8 @@ footer{
 
 /*datagrid*/
 .gridview_header{
-    background-color:#00432D;
-    color:#87C8B3;
+    background-color:#1845EB;
+    color:#E8ECED;
     font-weight:bolder;
 }
 
@@ -109,8 +109,8 @@ footer{
 }
 
 .datagrid{
-    background-color:#87C8B3;
-    color:#00432D;   
+    background-color:rgba(125,185,232,1);
+    color:#063B4D;   
 }
 
 .datagrid a{

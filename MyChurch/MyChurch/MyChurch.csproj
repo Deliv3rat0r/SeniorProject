@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Users\Print.aspx" />
+    <Content Include="Users\PrintSchedule.aspx" />
     <Content Include="CSS\DefaultStyles.css" />
     <Content Include="Default.aspx" />
     <Content Include="packages.config" />
@@ -104,6 +106,20 @@
     </Compile>
     <Compile Include="Code\ChurchProfile.cs" />
     <Compile Include="Code\ChurchProfileRepo.cs" />
+    <Compile Include="Users\Print.aspx.cs">
+      <DependentUpon>Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Print.aspx.designer.cs">
+      <DependentUpon>Print.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\PrintSchedule.aspx.cs">
+      <DependentUpon>PrintSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\PrintSchedule.aspx.designer.cs">
+      <DependentUpon>PrintSchedule.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Code\Schedule.cs" />
     <Compile Include="Code\Service.cs" />
     <Compile Include="Code\Worker.cs" />
