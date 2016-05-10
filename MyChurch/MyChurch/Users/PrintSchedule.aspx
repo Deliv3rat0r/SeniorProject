@@ -12,7 +12,7 @@
         runat="server" 
         ConnectionString="<%$ConnectionStrings:DB_MYCHURCH %>" 
         SelectCommandType="Text" 
-        SelectCommand="SELECT SPService.Title, SPService.Duration, SPService.ServiceDate, SPJobs.JobTitle, CONCAT(SPWorker.FName, ' ', SPWorker.LName) AS WholeName FROM SPService JOIN SPScheduleService ON SPScheduleService.ServiceID = SPService.ServiceID JOIN SPSchedule ON SPScheduleService.ScheduleID = SPSchedule.ScheduleID JOIN SPAssignedJob ON SPAssignedJob.ServiceID = SPService.ServiceID JOIN SPJobs ON SPJobs.JobID = SPAssignedJob.JobID JOIN SPWorker ON SPWorker.WorkerID = SPAssignedJob.WorkerID WHERE SPSchedule.UserId=@UserId AND DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 0 OR DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 1 ORDER BY SPService.ServiceDate">
+        SelectCommand="SELECT SPService.Title, SPService.Duration, SPService.ServiceDate, SPJobs.JobTitle, CONCAT(SPWorker.FName, ' ', SPWorker.LName) AS WholeName FROM SPService JOIN SPScheduleService ON SPScheduleService.ServiceID = SPService.ServiceID JOIN SPSchedule ON SPScheduleService.ScheduleID = SPSchedule.ScheduleID JOIN SPAssignedJob ON SPAssignedJob.ServiceID = SPService.ServiceID JOIN SPJobs ON SPJobs.JobID = SPAssignedJob.JobID JOIN SPWorker ON SPWorker.WorkerID = SPAssignedJob.WorkerID WHERE SPSchedule.UserId=@UserId AND DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 0 OR DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = -1 ORDER BY SPService.ServiceDate">
 
         <SelectParameters>
             <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />

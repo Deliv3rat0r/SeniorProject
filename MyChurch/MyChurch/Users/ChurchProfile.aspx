@@ -115,7 +115,7 @@
                 ConnectionString="<%$ConnectionStrings:DB_MYCHURCH %>"
                 runat="server"
                 SelectCommandType="Text"
-                SelectCommand="SELECT SPService.Title, SPService.Duration, SPService.ServiceDate FROM SPService JOIN SPScheduleService ON SPService.ServiceID = SPScheduleService.ServiceID JOIN SPSchedule ON SPSchedule.ScheduleID = SPScheduleService.ScheduleID WHERE SPSchedule.UserId = @UserId AND DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 1 OR DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 0 ORDER BY SPService.ServiceDate">
+                SelectCommand="SELECT SPService.Title, SPService.Duration, SPService.ServiceDate FROM SPService JOIN SPScheduleService ON SPService.ServiceID = SPScheduleService.ServiceID JOIN SPSchedule ON SPSchedule.ScheduleID = SPScheduleService.ScheduleID WHERE SPSchedule.UserId = @UserId AND DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 1 OR DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = 0 OR DATEDIFF(MONTH, SPService.ServiceDate, getdate()) = -1 ORDER BY SPService.ServiceDate">
 
                 <SelectParameters>
                     <asp:Parameter Name="UserId" Direction="Input" DbType="Guid" />
